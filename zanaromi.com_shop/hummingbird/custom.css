@@ -1,0 +1,10 @@
+.dm-vat-tooltip .dm-tooltip-text {white-space: wrap;}
+
+
+.product-miniature__prices {flex-wrap: wrap;}
+.product-miniature__price-taxless {flex-basis: 100%;margin-top: 0.25rem;font-size: 0.9375rem;}
+
+.product__current-price .product__tax-label {font-size: 0.8em;}
+.product__price-taxless {font-size: 1rem;}
+.product__price-taxless span {font-size: 0.9em;}
+
