@@ -14,7 +14,7 @@ $pdo = new PDO(
 );
 
 // ---- 2) Seznam podporovaných jazyků
-$supported = ['cs','de','en','fr','hu','pl','ro','sk'];
+$supported = ['cs','de','gb','fr','hu','pl','ro','sk'];
 
 // ---- 3) Určení jazyka
 $lang = $_GET['lang'] ?? null;
@@ -547,7 +547,7 @@ $path = $_GET['path'] ?? '';
               </li>  
               <!-- @mf nav kontakt -->
               <li class="nav-item me-lg-n2 me-xl-0">
-                <a class="nav-link fs-sm" href="/shop/<?= $lang ?>/contact-us" role="button" data-bs-trigger="hover" aria-expanded="false"><?= t('nav.c0', 'CONTACT') ?></a>
+                <a class="nav-link fs-sm" href="/shop/<?= $lang ?>/<?= t('url.contact', 'contact-us') ?>" role="button" data-bs-trigger="hover" aria-expanded="false"><?= t('nav.c0', 'CONTACT') ?></a>
               </li>  
               <!-- @mf nav novinky -->
               <li class="nav-item me-lg-n2 me-xl-0">
@@ -729,7 +729,7 @@ $path = isset($path) ? (string)$path : '';
 $flags = [
   'cs' => ['file' => 'cs.svg', 'label' => 'Čeština'],
   'de' => ['file' => 'de.svg', 'label' => 'Deutsch'],
-  'en' => ['file' => 'us.svg', 'label' => 'English'],   // casto US vlajka
+  'gb' => ['file' => 'gb.svg', 'label' => 'English GB'],
   'fr' => ['file' => 'fr.svg', 'label' => 'Français'],
   'hu' => ['file' => 'hu.svg', 'label' => 'Magyar'],
   'pl' => ['file' => 'pl.svg', 'label' => 'Polski'],
@@ -738,7 +738,7 @@ $flags = [
 ];
 
 // Aktualni jazyk/label/vlajka s fallbackem
-$cur = $flags[$lang] ?? ['file' => 'us.svg', 'label' => strtoupper($lang ?? 'EN')];
+$cur = $flags[$lang] ?? ['file' => 'gb.svg', 'label' => strtoupper($lang ?? 'GB')];
 
 // Helper pro generovani URL /{lang}/{path?}
 $hrefFor = function(string $code) use ($path): string {
@@ -751,7 +751,7 @@ $hrefFor = function(string $code) use ($path): string {
      aria-haspopup="true" aria-expanded="false"
      aria-label="Language: <?= htmlspecialchars($cur['label']) ?>">
     <div class="ratio ratio-1x1" style="width: 25px">
-      <img src="/x-assets/img/flags/<?= htmlspecialchars($cur['file']) ?>"
+      <img src="x-assets/img/flags/<?= htmlspecialchars($cur['file']) ?>"
            alt="<?= htmlspecialchars($cur['label']) ?>">
     </div>
   </a>
@@ -761,7 +761,7 @@ $hrefFor = function(string $code) use ($path): string {
       <li>
         <a class="dropdown-item <?= $code === $lang ? 'active' : '' ?>"
            href="<?= htmlspecialchars($hrefFor($code)) ?>">
-          <img src="/x-assets/img/flags/<?= htmlspecialchars($meta['file']) ?>"
+          <img src="x-assets/img/flags/<?= htmlspecialchars($meta['file']) ?>"
                class="flex-shrink-0 me-2" width="20"
                alt="<?= htmlspecialchars($meta['label']) ?>">
           &nbsp;&nbsp;<?= htmlspecialchars($meta['label']) ?>
@@ -1110,7 +1110,7 @@ $hrefFor = function(string $code) use ($path): string {
                   <p class="fs-xs pb-2 mb-1">10+ <?= t('cat3.prod', 'Products') ?></p>
                   <h2 class="h5 mb-2 mb-xxl-3"><?= t('cat3.sor2', 'Fruit Juices & Concentrates') ?></h2>
                   <div class="nav">
-                    <a class="nav-link animate-underline stretched-link text-body-emphasis text-nowrap px-0" href="/shop/<?= $lang ?>/napiste-nam">
+                    <a class="nav-link animate-underline stretched-link text-body-emphasis text-nowrap px-0" href="/shop/<?= $lang ?>/<?= t('url.contact', 'contact-us') ?>">
                       <span class="animate-target"><?= t('best.f1b', 'Shop now') ?></span>
                       <i class="ci-chevron-right fs-base ms-1"></i>
                     </a>
@@ -3564,13 +3564,13 @@ $hrefFor = function(string $code) use ($path): string {
                   <div class="accordion-collapse collapse d-sm-block" id="accountLinks" aria-labelledby="accountHeading" data-bs-parent="#footerLinks">
                     <ul class="nav flex-column gap-2 pt-sm-3 pb-3 pb-sm-0 mt-n1 mb-1 mb-sm-0">
                       <li class="d-flex w-100 pt-1">
-                        <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="/shop/<?= $lang ?>/guest-tracking"><?= t('foot.s21', 'Order tracking') ?></a>
+                        <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="/shop/<?= $lang ?>/<?= t('url.guest_tracking', 'guest-tracking') ?>"><?= t('foot.s21', 'Order tracking') ?></a>
                       </li>
                       <li class="d-flex w-100 pt-1">
-                        <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="/shop/<?= $lang ?>/my-account"><?= t('foot.s22', 'Sign in') ?></a>
+                        <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="/shop/<?= $lang ?>/<?= t('url.my_account', 'my-account') ?>"><?= t('foot.s22', 'Sign in') ?></a>
                       </li>
                       <li class="d-flex w-100 pt-1">
-                        <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="/shop/<?= $lang ?>/registration"><?= t('foot.s23', 'Create account') ?></a>
+                        <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="/shop/<?= $lang ?>/<?= t('url.create_account', 'create-account') ?>"><?= t('foot.s23', 'Create account') ?></a>
                       </li>
                       <li class="d-flex w-100 pt-1">
                         <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="/shop/<?= $lang ?>/content/7-privacy-policy-gdpr"><?= t('foot.s24', 'Cookies') ?></a>
@@ -3605,10 +3605,10 @@ $hrefFor = function(string $code) use ($path): string {
                         <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="/shop/<?= $lang ?>/content/8-withdrawal-form"><?= t('foot.s34', 'Withdrawal Form') ?></a>
                       </li>
                       <li class="d-flex w-100 pt-1">
-                        <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="/shop/<?= $lang ?>/contact-us"><?= t('foot.s35', 'Contact us') ?></a>
+                        <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="/shop/<?= $lang ?>/<?= t('url.contact', 'contact-us') ?>"><?= t('foot.s35', 'Contact us') ?></a>
                       </li>
                       <li class="d-flex w-100 pt-1">
-                        <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="/shop/<?= $lang ?>/sitemap"><?= t('foot.s36', 'Sitemap') ?></a>
+                        <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="/<?= $lang ?>/sitemap"><?= t('foot.s36', 'Sitemap') ?></a>
                       </li>
                     </ul>
                   </div>
