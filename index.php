@@ -72,6 +72,30 @@ $path = $_GET['path'] ?? '';
     <meta name="keywords" content="<?= t('meta.keyw', 'home burning of spirits, home burning, flavoring of spirits, Flavours and Fragrances, spirits flavoring, Alcohol Essences, flavoring Spirits, Liqueur flavorings, Liquor flavorings, Flavors for Manufacturers, Winemaking, Wine Additives, Wine Flavorings') ?>">
     <meta name="author" content="ZAN-AROMI">
 
+
+    <!-- Hreflang alternates -->
+    <?php
+    $hreflangBase = 'https://zanaromi.com';
+    $hreflangPath = $path ? '/' . ltrim($path, '/') : '';
+    $hreflangMap = [
+      'cs' => 'cs-CZ',
+      'de' => 'de-de',
+      'gb' => 'en-GB',
+      'fr' => 'fr-fr',
+      'hu' => 'hu-hu',
+      'pl' => 'pl-pl',
+      'ro' => 'ro-ro',
+      'sk' => 'sk-sk'
+    ];
+    foreach ($hreflangMap as $langCode => $hreflang) {
+      $href = sprintf('%s/%s%s', $hreflangBase, $langCode, $hreflangPath);
+      echo '<link rel="alternate" hreflang="' . $hreflang . '" href="' . htmlspecialchars($href, ENT_QUOTES, 'UTF-8') . '">' . PHP_EOL;
+    }
+    echo '<link rel="alternate" hreflang="x-default" href="' . htmlspecialchars($hreflangBase . '/cs' . $hreflangPath, ENT_QUOTES, 'UTF-8') . '">' . PHP_EOL;
+    ?>
+
+
+
     <!-- Webmanifest + Favicon / App icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -183,10 +207,10 @@ $path = $_GET['path'] ?? '';
   <!-- Right: nav -->
   <ul class="nav gap-4 hide-mobile">
     <li class="animate-underline">
-      <a class="nav-link animate-target fs-xs p-0" href=""><?= t('top.v3', 'Wishlist') ?></a>
+      <a class="nav-link animate-target fs-xs p-0" href="/shop/<?= $lang ?>/content/4-about-us"><?= t('nav.a0', 'ABOUT US') ?></a>
     </li>
     <li class="animate-underline">
-      <a class="nav-link animate-target fs-xs p-0" href=""><?= t('top.v4', 'Account') ?></a>
+      <a class="nav-link animate-target fs-xs p-0" href="/shop/<?= $lang ?>/<?= t('url.contact', 'contact-us') ?>"><?= t('nav.c0', 'CONTACT') ?></a>
     </li>
   </ul>
 </div>
@@ -541,14 +565,16 @@ $path = $_GET['path'] ?? '';
               <li class="nav-item me-lg-n2 me-xl-0">
                 <a class="nav-link fs-sm" href="/shop/<?= $lang ?>" role="button" data-bs-trigger="hover" aria-expanded="false"><?= t('nav.s0', 'SHOP') ?></a>
               </li>  
-              <!-- @mf nav o nas -->
+              <!-- @mf nav o nas
               <li class="nav-item me-lg-n2 me-xl-0">
                 <a class="nav-link fs-sm" href="/shop/<?= $lang ?>/content/4-about-us" role="button" data-bs-trigger="hover" aria-expanded="false"><?= t('nav.a0', 'ABOUT US') ?></a>
-              </li>  
-              <!-- @mf nav kontakt -->
+              </li>
+              -->  
+              <!-- @mf nav kontakt 
               <li class="nav-item me-lg-n2 me-xl-0">
                 <a class="nav-link fs-sm" href="/shop/<?= $lang ?>/<?= t('url.contact', 'contact-us') ?>" role="button" data-bs-trigger="hover" aria-expanded="false"><?= t('nav.c0', 'CONTACT') ?></a>
-              </li>  
+              </li> 
+              --> 
               <!-- @mf nav novinky -->
               <li class="nav-item me-lg-n2 me-xl-0">
                 <a class="nav-link fs-sm" href="/shop/<?= $lang ?>/134-new-arrivals-new" role="button" data-bs-trigger="hover" aria-expanded="false"><?= t('nav.na0', 'NEW ARRIVALS') ?></a>
