@@ -184,10 +184,10 @@ $path = $_GET['path'] ?? '';
     }' style="min-width:0;">
       <div class="swiper-wrapper">
         <div class="swiper-slide text-truncate text-center">
-          🎉 <?= t('top.v21', 'Free Shipping on orders over $400.') ?> <span class="d-none d-sm-inline"><?= t('top.v211', 'Do not miss a discount!') ?></span>
+          💰 <?= t('top.v21', 'Free Shipping on orders over $400.') ?> <span class="d-none d-sm-inline"><?= t('top.v211', 'Do not miss a discount!') ?></span>
         </div>
         <div class="swiper-slide text-truncate text-center">
-          💰 <?= t('top.v22', 'Money back guarantee.') ?> <span class="d-none d-sm-inline"><?= t('top.v221', 'We return money within 30 days.') ?></span>
+          🎉 <?= t('top.v22', 'Money back guarantee.') ?> <span class="d-none d-sm-inline"><?= t('top.v221', 'We return money within 30 days.') ?></span>
         </div>
         <div class="swiper-slide text-truncate text-center">
           💪 <?= t('top.v23', 'Friendly 9-16 customer support.') ?> <span class="d-none d-sm-inline"><?= t('top.v231', 'We have got you covered!') ?></span>
