@@ -777,7 +777,7 @@ $hrefFor = function(string $code) use ($path): string {
      aria-haspopup="true" aria-expanded="false"
      aria-label="Language: <?= htmlspecialchars($cur['label']) ?>">
     <div class="ratio ratio-1x1" style="width: 25px">
-      <img src="x-assets/img/flags/<?= htmlspecialchars($cur['file']) ?>"
+      <img src="/x-assets/img/flags/<?= htmlspecialchars($cur['file']) ?>"
            alt="<?= htmlspecialchars($cur['label']) ?>">
     </div>
   </a>
@@ -787,7 +787,7 @@ $hrefFor = function(string $code) use ($path): string {
       <li>
         <a class="dropdown-item <?= $code === $lang ? 'active' : '' ?>"
            href="<?= htmlspecialchars($hrefFor($code)) ?>">
-          <img src="x-assets/img/flags/<?= htmlspecialchars($meta['file']) ?>"
+          <img src="/x-assets/img/flags/<?= htmlspecialchars($meta['file']) ?>"
                class="flex-shrink-0 me-2" width="20"
                alt="<?= htmlspecialchars($meta['label']) ?>">
           &nbsp;&nbsp;<?= htmlspecialchars($meta['label']) ?>
